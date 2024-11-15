@@ -1,0 +1,13 @@
+version: "3.8"
+
+services:
+  vite-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "5173:5173" # Map container port 5173 to host port 5173
+    volumes:
+      - .:/app # Bind mount the project directory
+      - /app/node_modules # Ignore `node_modules` in the container
+    command: npm run dev -- --host
