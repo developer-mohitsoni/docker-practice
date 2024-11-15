@@ -1,4 +1,4 @@
-import prisma from "../src/controllers/userController.js";
+import {prisma} from "../src/controllers/userController.js";
 
 async function main() {
   await prisma.user.createMany({
