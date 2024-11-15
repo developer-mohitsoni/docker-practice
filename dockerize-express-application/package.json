@@ -1,0 +1,19 @@
+{
+  "name": "dockerize-express-application",
+  "version": "1.0.0",
+  "description": "This is simple express application",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon server.js"
+  },
+  "keywords": [
+    "Express",
+    "Server"
+  ],
+  "author": "Mohit Soni <ms7085422@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.21.1"
+  }
+}
