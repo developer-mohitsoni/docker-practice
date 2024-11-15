@@ -1,17 +1,31 @@
-version: "3.8"
-
 services:
-  express-app:
+  backend-app:
     build:
       context: .
       dockerfile: Dockerfile
     ports:
-      - "${PORT}:${PORT}" # Map container port 5173 to host port 5173
+      - "${PORT}:${PORT}"
     volumes:
-      - .:/app # Bind mount the project directory
-      - /app/node_modules # Ignore `node_modules` in the container
-    env_file:
-      - .env # Load environment variables from the .env file
+      - .:/app
+      - /app/node_modules
     environment:
-      CHOKIDAR_USEPOLLING: "true" # Enable polling for file changes
+      DATABASE_URL: postgresql://postgres:02408878@postgres-db:5432/docker-backend
+      CHOKIDAR_USEPOLLING: "true"
+    depends_on:
+      - postgres-db
     command: npm run dev
+
+  postgres-db:
+    image: postgres:15
+    container_name: postgres_container
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 02408878
+      POSTGRES_DB: docker-backend
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+
+volumes:
+  postgres-data:
