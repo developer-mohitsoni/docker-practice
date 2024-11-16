@@ -9,7 +9,7 @@ services:
       - .:/app
       - /app/node_modules
     environment:
-      DATABASE_URL: postgresql://postgres:02408878@postgres-db:5432/docker-backend
+      DATABASE_URL: postgresql://postgres:02408878@postgres-db:5432/docker-backend?schema=public
       CHOKIDAR_USEPOLLING: "true"
     depends_on:
       - postgres-db
